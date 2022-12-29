@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from 'react'
 
 export async function getServerSideProps(context) {
 
@@ -9,9 +10,7 @@ export async function getServerSideProps(context) {
   const geoRes = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${process.env.OPEN_WEATHER_KEY}`);
   const geoData = await geoRes.json();
   if (!geoData) {
-    return {
-      notFound: true
-    };
+    return {};
   }
   const lat = geoData['lat'];
   const lon = geoData['lon'];
@@ -20,9 +19,7 @@ export async function getServerSideProps(context) {
   const weatherRes = await fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_KEY}&units=imperial&exclude=minutely`);
   const weatherData = await weatherRes.json();
   if (!weatherData) {
-    return {
-      notFound: true
-    };
+    return {};
   }
 
   return {
