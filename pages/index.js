@@ -2,7 +2,7 @@ import React from "react";
 
 export async function getServerSideProps(context) {
 
-  let city = "Chicago";
+  let city = "Los Angeles";
 
   // GET COORDS OF CITY
   const geoRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.OPEN_WEATHER_KEY}`);
