@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function App({geoData, weatherData}) {
+export default function Zip({geoData, weatherData}) {
   
   if ("cod" in geoData) {
     return (<p>OpenWeather Geolocation Error {geoData['cod']}: {geoData['message']}</p>);
