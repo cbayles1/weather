@@ -2,18 +2,19 @@ import React from "react";
 
 export async function getServerSideProps(context) {
 
-  let city = "Los Angeles";
+  let zipCode = `62526`;
+  let countryCode = `US`;
 
   // GET COORDS OF CITY
-  const geoRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.OPEN_WEATHER_KEY}`);
+  const geoRes = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},${countryCode}&appid=${process.env.OPEN_WEATHER_KEY}`);
   const geoData = await geoRes.json();
   if (!geoData) {
     return {
       notFound: true
     };
   }
-  const lat = geoData[0]['lat'];
-  const lon = geoData[0]['lon'];
+  const lat = geoData['lat'];
+  const lon = geoData['lon'];
 
   // GET WEATHER OF COORDS
   const weatherRes = await fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_KEY}&units=imperial&exclude=minutely`);
@@ -26,19 +27,23 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      geoData: geoData[0],
+      geoData: geoData,
       weatherData: weatherData,
+      notFound: false,
     }
   };
 }
 
 export default function App({geoData, weatherData}) {
-
-  if (geoData['notFound'] || weatherData['notFound']) {
-    return (<></>);
+  
+  if ("cod" in geoData) {
+    return (<p>OpenWeather Geolocation Error {geoData['cod']}: {geoData['message']}</p>);
+  }
+  if ("cod" in weatherData) {
+    return (<p>OpenWeather Weather Error {weatherData['cod']}: {weatherData['message']}</p>);
   }
 
   return (<>
-  <p>The current temperature in {geoData.name}, {geoData.country} is {weatherData.current.temp} F</p>
+    <p>The current temperature in {geoData.name}, {geoData.country} is {weatherData.current.temp} F</p>
   </>);
 }
