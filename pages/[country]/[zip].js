@@ -66,7 +66,7 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
     <div id="current">
       <span id="leftHalf">
         <br></br>
-        <Link href="/" id="back">Change Location</Link>
+        <button><Link href="/" id="back">Change Location</Link></button>
         <div id="currentTempBox">
           <div id="currentTemp">{Math.round(currentWeather['temp'])}°F</div>
           <div id="feelsLike">Feels Like: {Math.round(currentWeather['feels_like'])}°F</div>

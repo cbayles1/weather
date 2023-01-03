@@ -15,7 +15,8 @@ export default function Country() {
     router.push(`${country}/${zip}`);
   }
 
-  return (<>
+  return (
+  <div class="searchPageContainer">
     <Head>
       <title>My New Weather App</title>
     </Head>
@@ -28,5 +29,5 @@ export default function Country() {
       <br></br>
       <button type="submit">Submit</button>
     </form>
-  </>);
+  </div>);
 }
