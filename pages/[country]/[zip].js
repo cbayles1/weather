@@ -1,5 +1,4 @@
 import React from "react";
-import {useState} from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -59,17 +58,18 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
   const sunset = moment(currentWeather['sunset'] * 1000).format('LT');
   forecastWeather = forecastWeather.slice(0,8);
 
-  return (
-    <div id="container">
+  return (<>
     <Head>
       <title>My New Weather App</title>
     </Head>
+    <div id="container">
     <div id="current">
       <span id="leftHalf">
-        <a href="../../index.js" id="back">Change Location</a>
+        <br></br>
+        <Link href="/" id="back">Change Location</Link>
         <div id="currentTempBox">
-          <div id="currentTemp">{Math.round(currentWeather['temp'])} °F</div>
-          <div id="feelsLike">Feels Like: {Math.round(currentWeather['feels_like'])} °F</div>
+          <div id="currentTemp">{Math.round(currentWeather['temp'])}°F</div>
+          <div id="feelsLike">Feels Like: {Math.round(currentWeather['feels_like'])}°F</div>
         </div>
       </span>
       <span id="rightHalf">
@@ -78,10 +78,10 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
       </span>
       <div id="otherCurrentInfo">
         <span className="otherCurrentInfo">UV Index: {currentWeather['uvi']} </span>
-        <span className="otherCurrentInfo">Wind Speed: {currentWeather['wind_speed']} </span>
+        <span className="otherCurrentInfo">Wind Speed: {currentWeather['wind_speed']} mph</span>
         <span className="otherCurrentInfo">Sunrise: {sunrise}</span>
-        <span className="otherCurrentInfo">Humidity: {currentWeather['humidity']} </span>
-        <span className="otherCurrentInfo">Pressure: {currentWeather['pressure']} </span>
+        <span className="otherCurrentInfo">Humidity: {currentWeather['humidity']}%</span>
+        <span className="otherCurrentInfo">Pressure: {currentWeather['pressure']} hPa</span>
         <span className="otherCurrentInfo">Sunset: {sunset}</span>
       </div>
     </div>
@@ -95,10 +95,11 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
       {forecastWeather.map(hourlyWeather => (
         <span key={hourlyWeather['dt']} className="forecastHour">
           <img src={"https://openweathermap.org/img/wn/" + hourlyWeather['weather'][0]['icon'] + "@2x.png"} className='forecastImg'></img>
-          <div className='forecastTemp'>{Math.round(hourlyWeather['temp'])} °F</div>
+          <div className='forecastTemp'>{Math.round(hourlyWeather['temp'])}°F</div>
           <div className='forecastTime'>{moment(hourlyWeather['dt'] * 1000).format('LT')}</div>
         </span>
       ))}
     </div>
-  </div>);
+  </div>
+  </>);
 }
