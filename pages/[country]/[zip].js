@@ -68,8 +68,8 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
       <span id="leftHalf">
         <div id="back">Change Location</div>
         <div id="currentTempBox">
-          <p id="currentTemp">{currentWeather['temp']}</p>
-          <p id="feelsLike">{currentWeather['feels_like']}</p>
+          <div id="currentTemp">{Math.round(currentWeather['temp'])} °F</div>
+          <div id="feelsLike">Feels Like: {Math.round(currentWeather['feels_like'])} °F</div>
         </div>
       </span>
       <span id="rightHalf">
@@ -95,7 +95,7 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
       {forecastWeather.map(hourlyWeather => (
         <span key={hourlyWeather['dt']} className="forecastHour">
           <img className='forecastImg'></img>
-          <div className='forecastTemp'>{hourlyWeather['temp']}</div>
+          <div className='forecastTemp'>{Math.round(hourlyWeather['temp'])} °F</div>
           <div className='forecastTime'>{moment(hourlyWeather['dt'] * 1000).format('LT')}</div>
         </span>
       ))}

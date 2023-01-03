@@ -1,16 +1,19 @@
 :root {
-  background-color: gray;
+  background-color: black;
+  background-image: url("../public/img/background.png");
+  background-repeat: repeat;
+  background-size: cover;
+  overflow: hidden;
 }
 
 #container {
-  height: 40em;
-  color: black;
+  max-height: 40em;
+  color: #f5f5f5;
 }
 
 #current {
   width: 100%;
   height: 50%;
-  background-color: red;
 }
 
 #leftHalf {
@@ -18,15 +21,15 @@
   width: 50%;
   float: left;
   height: 80%;
-  background-color: pink;
 }
 
 #back {
-  min-width: 4em;
+  min-width: 8em;
   max-width: 20%;
   height: 15%;
-  background-color: yellow;
+  background-color: navy;
   margin: 3%;
+  font-size: 2rem;
 }
 
 #currentTempBox {
@@ -34,21 +37,20 @@
   max-width: 40%;
   height: 50%;
   margin: 3%;
-  background-color: blue;
 }
 
 #currentTemp {
   height: 60%;
   min-width: 5em;
   max-width: 80%;
-  background-color: yellow;
+  font-size: 4rem;
 }
 
 #feelsLike {
-  min-width: 2em;
-  max-width: 60%;
+  min-width: 12em;
+  max-width: 100%;
   height: 30%;
-  background-color: red;
+  font-size: 1.5rem;
 }
 
 #rightHalf {
@@ -56,29 +58,30 @@
   width: 50%;
   float: right;
   height: 80%;
-  background-color: tan;
 }
 
 #todayImg {
   min-width: 12em;
   max-width: 70%;
   height: 70%;
-  background-color: yellow;
+  background-color: navy;
 }
 
 #desc {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
   min-width: 10em;
   max-width: 85%;
   height: 20%;
-  background-color: blue;
+  font-size: 1.5rem;
 }
 
 #otherCurrentInfo {
   max-width: 90%;
   height: 20%;
-  background-color: green;
   float: left;
   margin-left: 2em;
+  padding-top: 1em;
 }
 
 .otherCurrentInfo {
@@ -88,41 +91,48 @@
 
 #timePlaceBanner {
   width: 100%;
-  height: 10%;
+  min-height: 10%;
+  max-height: 20%;
   background-color: orange;
+  display: grid;
+  font-size: 2rem;
 }
 
 #currentDatetime {
-  float: left;
-  margin-left: 1em;
+  grid-row: 1;
+  margin: auto;
 }
 
 #location {
-  float: right;
-  margin-right: 1em;
+  grid-row: 1;
+  margin: auto;
 }
 
 #forecast {
   height: 40%;
   width: 100%;
-  background-color: blue;
+  margin: 1em;
 }
 
 .forecastHour {
   display: inline-block;
   width: 12.5%;
   height: 100%;
-  background-color: cadetblue;
 }
 
 .forecastImg {
+  max-width: 100%;
+  min-width: 50%;
   height: 50%;
+  background-color: navy;
 }
 
 .forecastTemp {
   height: 25%;
+  font-size: 2rem;
 }
 
 .forecastTime {
   height: 25%;
+  font-size: 1.25rem;
 }
