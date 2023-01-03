@@ -64,7 +64,6 @@
   min-width: 12em;
   max-width: 70%;
   height: 70%;
-  background-color: navy;
 }
 
 #desc {
@@ -93,7 +92,7 @@
   width: 100%;
   min-height: 10%;
   max-height: 20%;
-  background-color: orange;
+  background-color: grey;
   display: grid;
   font-size: 2rem;
 }
@@ -111,7 +110,8 @@
 #forecast {
   height: 40%;
   width: 100%;
-  margin: 1em;
+  padding: 1em;
+  background-color: rgba(100, 100, 200, 0.8);
 }
 
 .forecastHour {
@@ -124,7 +124,6 @@
   max-width: 100%;
   min-width: 50%;
   height: 50%;
-  background-color: navy;
 }
 
 .forecastTemp {

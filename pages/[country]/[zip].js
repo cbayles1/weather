@@ -66,14 +66,14 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
     </Head>
     <div id="current">
       <span id="leftHalf">
-        <div id="back">Change Location</div>
+        <a href="../../index.js" id="back">Change Location</a>
         <div id="currentTempBox">
           <div id="currentTemp">{Math.round(currentWeather['temp'])} °F</div>
           <div id="feelsLike">Feels Like: {Math.round(currentWeather['feels_like'])} °F</div>
         </div>
       </span>
       <span id="rightHalf">
-        <img id="todayImg"></img>
+        <img id="todayImg" src={"https://openweathermap.org/img/wn/" + currentWeather['weather'][0]['icon'] + "@2x.png"}></img>
         <div id="desc">{currentWeather['weather'][0]['description']}</div>
       </span>
       <div id="otherCurrentInfo">
@@ -94,7 +94,7 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
     <div id="forecast">
       {forecastWeather.map(hourlyWeather => (
         <span key={hourlyWeather['dt']} className="forecastHour">
-          <img className='forecastImg'></img>
+          <img src={"https://openweathermap.org/img/wn/" + hourlyWeather['weather'][0]['icon'] + "@2x.png"} className='forecastImg'></img>
           <div className='forecastTemp'>{Math.round(hourlyWeather['temp'])} °F</div>
           <div className='forecastTime'>{moment(hourlyWeather['dt'] * 1000).format('LT')}</div>
         </span>
