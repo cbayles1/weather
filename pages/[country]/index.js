@@ -1,6 +1,7 @@
 import React from "react";
 import {useRouter} from "next/router";
 import {useState} from 'react'
+import Head from 'next/head';
 
 export default function Country() {
 
@@ -15,6 +16,9 @@ export default function Country() {
   }
 
   return (<>
+    <Head>
+      <title>My New Weather App</title>
+    </Head>
     <h1>Welcome to {country}!</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor="zip">Zip code: </label>

@@ -1,6 +1,7 @@
 import React from "react";
 import {useRouter} from "next/router";
 import {useState} from 'react'
+import Head from 'next/head';
 
 export default function App() {
 
@@ -14,6 +15,9 @@ export default function App() {
   }
 
   return (<>
+    <Head>
+      <title>My New Weather App</title>
+    </Head>
     <form onSubmit={handleSubmit}>
       <label htmlFor="country">Country code: </label>
       <input id="country" onChange={(inputElement) => {

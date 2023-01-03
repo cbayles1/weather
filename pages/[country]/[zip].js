@@ -1,5 +1,7 @@
 import React from "react";
 import {useState} from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
 
 const moment = require('moment');
 
@@ -57,24 +59,27 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
   const sunset = moment(currentWeather['sunset'] * 1000).format('LT');
   forecastWeather = forecastWeather.slice(0,8);
 
-  return (<>
+  return (
+    <div id="container">
+    <Head>
+      <title>My New Weather App</title>
+    </Head>
     <div id="current">
       <span id="leftHalf">
         <div id="back">Change Location</div>
         <div id="currentTempBox">
-          <h2 id="currentTemp">{currentWeather['temp']}</h2>
+          <p id="currentTemp">{currentWeather['temp']}</p>
           <p id="feelsLike">{currentWeather['feels_like']}</p>
         </div>
       </span>
       <span id="rightHalf">
         <img id="todayImg"></img>
-        <p id="desc">{currentWeather['weather'][0]['description']}</p>
+        <div id="desc">{currentWeather['weather'][0]['description']}</div>
       </span>
       <div id="otherCurrentInfo">
         <span className="otherCurrentInfo">UV Index: {currentWeather['uvi']} </span>
         <span className="otherCurrentInfo">Wind Speed: {currentWeather['wind_speed']} </span>
         <span className="otherCurrentInfo">Sunrise: {sunrise}</span>
-        <br></br>
         <span className="otherCurrentInfo">Humidity: {currentWeather['humidity']} </span>
         <span className="otherCurrentInfo">Pressure: {currentWeather['pressure']} </span>
         <span className="otherCurrentInfo">Sunset: {sunset}</span>
@@ -88,12 +93,12 @@ export default function Zip({geoData, currentWeather, forecastWeather}) {
     </div>
     <div id="forecast">
       {forecastWeather.map(hourlyWeather => (
-        <span key={hourlyWeather['dt']}>
+        <span key={hourlyWeather['dt']} className="forecastHour">
           <img className='forecastImg'></img>
-          <p className='forecastTemp'>{hourlyWeather['temp']}</p>
-          <p className='forecastTime'>{moment(hourlyWeather['dt'] * 1000).format('LLLL')}</p>
+          <div className='forecastTemp'>{hourlyWeather['temp']}</div>
+          <div className='forecastTime'>{moment(hourlyWeather['dt'] * 1000).format('LT')}</div>
         </span>
       ))}
     </div>
-  </>);
+  </div>);
 }
